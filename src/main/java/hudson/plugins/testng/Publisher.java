@@ -3,14 +3,18 @@ package hudson.plugins.testng;
 import hudson.Extension;
 import hudson.FilePath;
 import hudson.Launcher;
-import hudson.model.*;
+import hudson.model.Action;
+import hudson.model.BuildListener;
+import hudson.model.Result;
+import hudson.model.AbstractBuild;
+import hudson.model.AbstractProject;
+import hudson.plugins.testng.PluginImpl;
+import hudson.plugins.testng.TestNGProjectAction;
+import hudson.plugins.testng.TestNGTestResultBuildAction;
 import hudson.plugins.testng.results.TestNGResult;
 import hudson.tasks.BuildStepDescriptor;
 import hudson.tasks.BuildStepMonitor;
 import hudson.tasks.Recorder;
-import net.sf.json.JSONObject;
-import org.kohsuke.stapler.DataBoundConstructor;
-import org.kohsuke.stapler.StaplerRequest;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,6 +23,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+
+import net.sf.json.JSONObject;
+
+import org.kohsuke.stapler.DataBoundConstructor;
+import org.kohsuke.stapler.StaplerRequest;
 
 /**
  * This class defines a @Publisher and @Extension
@@ -119,7 +128,8 @@ public class Publisher extends Recorder {
          //create an individual report for all of the results and add it to the build
          TestNGTestResultBuildAction action = new TestNGTestResultBuildAction(build, results);
          build.getActions().add(action);
-         if (results.getFailedConfigCount() > 0 || results.getFailCount() > 0) {
+         if (results.getFailedConfigCount() > 0 || results.getSkippedConfigCount() > 0 ||
+        		 -                  results.getFailCount() > 0 || results.getSkipCount() > 0) {
             build.setResult(Result.UNSTABLE);
          }
       } else {
