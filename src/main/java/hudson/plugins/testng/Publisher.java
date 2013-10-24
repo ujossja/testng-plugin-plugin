@@ -128,8 +128,7 @@ public class Publisher extends Recorder {
          //create an individual report for all of the results and add it to the build
          TestNGTestResultBuildAction action = new TestNGTestResultBuildAction(build, results);
          build.getActions().add(action);
-         if (results.getFailedConfigCount() > 0 || results.getSkippedConfigCount() > 0 ||
-        		 -                  results.getFailCount() > 0 || results.getSkipCount() > 0) {
+         if (results.getFailedConfigCount() > 0 || results.getSkippedConfigCount() > 0 || results.getFailCount() > 0 || results.getSkipCount() > 0) {
             build.setResult(Result.UNSTABLE);
          }
       } else {
