@@ -78,7 +78,7 @@ public class TestNGTestResultBuildAction extends AbstractTestResultAction implem
         }
     }
 
-    public static TestNGResult loadResults(AbstractBuild<?, ?> owner, PrintStream logger) {
+    static TestNGResult loadResults(AbstractBuild<?, ?> owner, PrintStream logger) {
         FilePath testngDir = Publisher.getTestNGReport(owner);
         FilePath[] paths = null;
         try {
