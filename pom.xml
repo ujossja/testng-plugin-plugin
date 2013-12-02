@@ -7,8 +7,8 @@
         <version>1.526</version>
     </parent>
 
-    <artifactId>testng-plugin</artifactId>
-    <version>1.6-SNAPSHOT</version>
+    <artifactId>jasonng-plugin</artifactId>
+    <version>1.6.2-SNAPSHOT</version>
     <packaging>hpi</packaging>
     <name>TestNG Results Plugin</name>
 
@@ -32,17 +32,11 @@
 
     <developers>
         <developer>
-            <id>nullin</id>
-            <name>Nalin Makar</name>
-            <email>nullin@nullin.com</email>
+            <id>ujossja</id>
+            <name>Jason Josselyn</name>
+            <email>jason.josselyn@pearson.com</email>
         </developer>
     </developers>
-
-    <scm>
-        <connection>scm:git:https://github.com/jenkinsci/testng-plugin-plugin.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/jenkinsci/testng-plugin-plugin.git</developerConnection>
-        <url>https://github.com/jenkinsci/testng-plugin-plugin</url>
-    </scm>
 
     <properties>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
